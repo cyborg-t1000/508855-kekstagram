@@ -23,7 +23,7 @@
   <label for="filter-random" class="filters-item">Случайные</label>
 </form>
 
-<form class="upload-form" id="upload-select-image" method="post" enctype="multipart/form-data" autocomplete="off">
+<form class="upload-form" id="upload-select-image" method="post" enctype="multipart/form-data" autocomplete="off" action="https://js.dump.academy/kekstagram">
   <div class="upload-image">
     <input type="file" id="upload-file" class="upload-input" name="filename" required>
     <label class="upload-file upload-control" for="upload-file"></label>
@@ -36,7 +36,7 @@
           <button type="button"
                   class="upload-resize-control upload-resize-controls-button upload-resize-controls-button-dec">–
           </button><!--
-          --><input type="text" class="upload-resize-control upload-resize-controls-value" value="55%" readonly title="Image Scale" name="scale"/><!--
+          --><input type="text" class="upload-resize-control upload-resize-controls-value" value="100%" readonly title="Image Scale" name="scale" min="25" max="100" /><!--
           --><button type="button"
                   class="upload-resize-control upload-resize-controls-button upload-resize-controls-button-inc">+
           </button>
@@ -95,7 +95,7 @@
 
         <input class="upload-form-hashtags" name="hashtags" placeholder="#хэш-тег">
 
-        <textarea class="upload-form-description" name="description" placeholder="Ваш комментарий..."></textarea>
+        <textarea class="upload-form-description" name="description" placeholder="Ваш комментарий..." maxlength="140"></textarea>
 
         <button class="upload-form-cancel" type="reset" id="upload-cancel">Закрыть</button>
         <button class="upload-form-submit" type="submit" id="upload-submit">Отправить</button>
@@ -150,5 +150,6 @@
   </a>
 </template>
 
+<script src="js/upload.js"></script>
 </body>
 </html>
