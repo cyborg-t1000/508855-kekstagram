@@ -1,6 +1,6 @@
 'use strict';
 
-window.InitializeScale = (function () {
+window.Scale = (function () {
 
   var initializeScale = function (scaleElement, adjustScale) {
 
@@ -13,7 +13,7 @@ window.InitializeScale = (function () {
         newValue = 100;
       }
       scaleElement.querySelector('.upload-resize-controls-value').value = newValue + '%';
-      adjustScale(adjustScale);
+      adjustScale(newValue);
     };
 
     scaleElement.querySelector('.upload-resize-controls-button-dec').addEventListener('click', function () {
