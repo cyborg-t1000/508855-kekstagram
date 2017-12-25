@@ -50,7 +50,7 @@ window.Upload = (function () {
     if (newValue > 100) {
       newValue = 100;
     }
-    setEffectValue(newValue, selectedEffect);
+    setEffectValue(newValue, window.selectedEffect);
   };
 
   var sliderStopMove = function (event) {
@@ -103,21 +103,19 @@ window.Upload = (function () {
     }
   });
 
-  uploadEffectControls.addEventListener('change', function (event) {
-    var target = event.target ? event.target : event.srcElement;
-    if (target.name === 'effect') {
-      event.stopPropagation();
-      selectedEffect = target.value;
-      effectImagePreview.classList.value = 'effect-image-preview';
-      effectImagePreview.classList.add('effect-' + selectedEffect);
-      if (selectedEffect === 'none') {
-        uploadEffectLevel.classList.add('hidden');
-      } else {
-        uploadEffectLevel.classList.remove('hidden');
-      }
-      setEffectValue(100, selectedEffect);
+  var applyFilter = function(newFilter) {
+    effectImagePreview.classList.value = 'effect-image-preview';
+    effectImagePreview.classList.add('effect-' + newFilter);
+    if (newFilter === 'none') {
+      uploadEffectLevel.classList.add('hidden');
+    } else {
+      uploadEffectLevel.classList.remove('hidden');
     }
-  });
+    setEffectValue(100, newFilter);
+  };
+
+  window.initializeFilters(uploadEffectControls, applyFilter);
+
 
   var adjustScale = function (scale) {
     effectImagePreview.style.transform = 'scale(' + scale / 100 + ')';
